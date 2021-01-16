@@ -29,6 +29,7 @@ export default class LoadingPage extends React.Component<Props> {
         //     }
         // });
     }
+
     render() {
         return (
             <View style={ styles.container } >
