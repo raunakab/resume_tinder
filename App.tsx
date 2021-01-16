@@ -36,6 +36,9 @@ import {
 	createAppContainer,
 } from 'react-navigation';
 import LoginPage from './screens/LoginPage';
+import LoadingPage from './screens/LoadingPage';
+import firebase from 'firebase';
+import { firebaseConfig } from './config';
 // import {
 // 	GoogleSignin,
 // 	GoogleSigninButton,
@@ -43,7 +46,8 @@ import LoginPage from './screens/LoginPage';
 // } from '@react-native-community/google-signin';
 
 const appSwitchNavigator = createSwitchNavigator({
-	LoginPage: LoginPage
+	LoginPage: LoginPage,
+	LoadingPage: LoadingPage,
 });
 const AppNavigator = createAppContainer(appSwitchNavigator);
 
