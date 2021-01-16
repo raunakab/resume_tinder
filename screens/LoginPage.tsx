@@ -13,10 +13,13 @@ import * as Google from 'expo-google-app-auth';
 import { firebaseConfig } from '../config';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import database from '@react-native-firebase/database';
 
 if (firebase.apps.length == 0) {
+    console.log('using new instance');
     firebase.initializeApp(firebaseConfig);
 } else {
+    console.log('using old instance');
     firebase.app();
 }
 
@@ -58,30 +61,20 @@ export default class LoginPage extends React.Component<Props> {
                 // await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
                 // console.log(result);
                 firebase.auth().onAuthStateChanged(async (firebaseUser: firebase.User | null) => {
-                    const userSignedIn: boolean = this.isUserEqual(result, firebaseUser);
+                    // const userSignedIn: boolean = this.isUserEqual(result, firebaseUser);
+                    const userSignedIn: boolean = false;
                     if (userSignedIn) {
                         // ... Do something here!
                     } else {
                         const credential = firebase.auth.GoogleAuthProvider.credential(result.idToken, result.accessToken);
-                        // const googleProfileData = await firebase.auth().signInWithCredential(credential)
-                        // .catch<void>((error: any): void => {
-                        //     console.log(error);
-                        //     alert('failed');
-                        //     // Handle Errors here.
-                        //     // const errorCode: any = error.code;
-                        //     // const errorMessage: any = error.message;
-                        //     // // The email of the user's account used.
-                        //     // const email: any = error.email;
-                        //     // // The firebase.auth.AuthCredential type that was used.
-                        //     // const credential: any = error.credential;
-                        //     // // ...
-                        // });
                         firebase.auth().signInWithCredential(credential)
                         .then<void>((userResult: firebase.auth.UserCredential): void => {
-                            firebase.database().ref('/users/' + (userResult.user !).uid).set({
-                                gmail: result.user.email,
-                                // firstName: userResult!.additionalUserInfo!.profile!.given_name
-                            });
+                            // firebase.database().ref('/users/' + userResult.user!.uid).set({
+                            //     gmail: result.user.email,
+                            //     // firstName: userResult!.additionalUserInfo!.profile!.given_name
+                            // });
+                            // const ref = database().ref('/users/');
+                            // firebase.database().ref('/users/').set(1);
                         })
                         .catch<void>((error: any): void => {
                             console.log(error);
