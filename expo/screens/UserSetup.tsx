@@ -1,100 +1,103 @@
-import React from 'react';
-import {Image} from 'react-native-elements';
-
+import React, { Component, useState } from 'react';
 import {
-    Alert,
-    Button,
 	StyleSheet,
-	View,
+	Text,
+    View,
+    TouchableOpacity,
 } from 'react-native';
+import firebase from 'firebase';
 import {
     NavigationScreenProp,
     NavigationState,
     NavigationParams,
 } from 'react-navigation';
-import * as Google from 'expo-google-app-auth';
-import { firebaseConfig } from '../config';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import database from '@react-native-firebase/database';
-
-if (firebase.apps.length == 0) {
-    console.log('using new instance');
-    firebase.initializeApp(firebaseConfig);
-} else {
-    console.log('using old instance');
-    firebase.app();
-}
+import { TextInput } from 'react-native-gesture-handler';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>
 }
 
-export default class UserSetup extends React.Component<Props> {
-    render() {
-        return (
-            <View style = {styles.container}>
-                    <Image 
-                        source ={ require("../assets/icon.png") }
-                        style = {styles.pfpStyle}
-                        onPress = {() => Alert.alert("goodbye")}
-                    />
 
-                    <Image 
-                        source ={ require("../assets/icon.png") }
-                        style = {styles.matchStyle}
-                        onPress = {() => Alert.alert("bye")}
-                        onPress = {() => this.props.navigation.navigate('matching')}
-                    />          
-                
+export default class LoadingPage extends React.Component<Props> {  
+
+    state = {
+        name: "",
+        age: "",
+        occupation: ""
+    }
+    submitButton = () => {
+        if (this.state.name != null && this.state.age != null) {
+            console.log(this.state.name);
+            // send info the database
+        }
+    }
+
+    
+    render() {
+        //const { name, age, occupation} = this.state;
+        return (
+            <View style={styles.container}>
+                <Text style={styles.formLabel}>Initialize Profile</Text>
+                <View>
+                <TextInput
+                placeholder="Full Name" placeholderTextColor= "#344566" style={styles.inputStyle}
+                value={this.state.name}
+                onChangeText={text => this.setState({name: text})}></TextInput>
+                <TextInput
+                placeholder="Age" placeholderTextColor= "#344566" style={styles.inputStyle} keyboardType="numeric"
+                onChangeText={text => this.setState({age: text})}></TextInput>
+                <TextInput
+                placeholder="Occupation" placeholderTextColor= "#344566" style={styles.inputStyle}
+                onChangeText={text => this.setState({occupation: text})}></TextInput>
+                </View>
+                <TouchableOpacity style={styles.button} onPress={() => this.submitButton}>
+                <Text style={styles.text}>Submit</Text></TouchableOpacity>
             </View>
-        );
+        )
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        
-        justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#fff',
         alignItems: 'center',
-
-        flexDirection: 'row',
-        paddingTop: 40,
-        
-        
-
-    },
-    // imageWrapper: {
-    //     width: 1000,
-    //     height: 1000,
-    //     backgroundColor: 'red'
-    // },
-    pfpStyle: {
-        // position: 'relative',
-        width: 125,
-        height: 125,
-        // marginTop: 0,
-        // marginLeft: 0,
-        // paddingRight:40,
-        left: 0,
-        // paddingLeft: 50,
-        // backgroundColor: 'blue',
-        borderWidth: 2.5,
-        
-    },
-
-    matchStyle: {
-        // position: 'relative',
-        width: 125,
-        height: 125,
-        // paddingLeft: 40,
-        // // marginBottom: 700,
-        // marginLeft: 0,
-        marginLeft: 100,
-        // paddingLeft: 50,
-        // backgroundColor: 'blue',
-        borderWidth: 2.5,
-        
-    },
-
-});
+        justifyContent: 'center',
+        height: 0,
+      },
+    
+      formLabel: {
+        fontSize: 20,
+        color: '#000000',
+      },
+      inputStyle: {
+        marginTop: 20,
+        width: 300,
+        height: 50,
+        paddingHorizontal: 10,
+        borderRadius: 50,
+        backgroundColor: '#cd23',
+      },
+      formText: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#cd2394',
+        fontSize: 20,
+      },
+      text: {
+        color: '#cd2394',
+        fontSize: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      button: {
+        width: 100,
+        height: 40,
+        paddingHorizontal: 10,
+        marginTop: 40,
+        borderRadius: 50,
+        backgroundColor: "#ac1094",
+        alignItems: 'center',
+        justifyContent: 'center'
+      }
+  });

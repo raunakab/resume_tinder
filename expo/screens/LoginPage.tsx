@@ -4,7 +4,8 @@ import {Image} from 'react-native-elements';
 import {
     Button,
 	StyleSheet,
-	View,
+    View,
+    Text,
 } from 'react-native';
 import {
     NavigationScreenProp,
