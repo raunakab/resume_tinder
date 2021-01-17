@@ -14,7 +14,7 @@ import * as Google from 'expo-google-app-auth';
 import { firebaseConfig } from '../config';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import database from '@react-native-firebase/database';
+import axios, { AxiosAdapter, AxiosResponse } from 'axios';
 
 if (firebase.apps.length == 0) {
     console.log('using new instance');
@@ -40,12 +40,17 @@ export default class LoginPage extends React.Component<Props> {
                     && (providerData[i] !).providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID
                     // && (providerData[i] !).uid === googleUser.getBasicProfile().getId()
                     ) {
-                    // We don't need to reauth the Firebase connection.
                     return true;
                 }
             }
         }
         return false;
+    }
+    
+    componentDidMount = () => {
+        axios.get(`url`).then<void>((result): void => {
+
+        });
     }
 
     signInWithGoogleAsync = async () => {
@@ -59,7 +64,7 @@ export default class LoginPage extends React.Component<Props> {
                 ],
             });
             if (result.type  === 'success') {
-                // await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+                await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
                 // console.log(result);
                 firebase.auth().onAuthStateChanged(async (firebaseUser: firebase.User | null) => {
                     // const userSignedIn: boolean = this.isUserEqual(result, firebaseUser);
@@ -70,12 +75,20 @@ export default class LoginPage extends React.Component<Props> {
                         const credential = firebase.auth.GoogleAuthProvider.credential(result.idToken, result.accessToken);
                         firebase.auth().signInWithCredential(credential)
                         .then<void>((userResult: firebase.auth.UserCredential): void => {
-                            // firebase.database().ref('/users/' + userResult.user!.uid).set({
-                            //     gmail: result.user.email,
-                            //     // firstName: userResult!.additionalUserInfo!.profile!.given_name
-                            // });
-                            // const ref = database().ref('/users/');
-                            // firebase.database().ref('/users/').set(1);
+                            userResult.user?.uid
+                            // const site: string = "https://api.github.com/"
+                            // const rest: string = "users/raunakab/repos?sort=pushed";
+                            // axios.get(`https://www.google.com/`)
+                            axios.get(`http://localhost:8080/people/1`)
+                            // axios.get(`${site}${rest}`)
+                            .then<void>((result: AxiosResponse<any>): void => {
+                                console.log(result);
+                                alert('worked');
+                            })
+                            .catch<void>((error: any): void => {
+                                console.log(error);
+                                alert('failed from get request');
+                            });
                         })
                         .catch<void>((error: any): void => {
                             console.log(error);
