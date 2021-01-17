@@ -1,5 +1,6 @@
 **node_modules
 **build
+**.env
 expo/.expo/*
 expo/npm-debug.*
 expo/*.jks
