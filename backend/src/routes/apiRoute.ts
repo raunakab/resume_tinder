@@ -10,5 +10,4 @@ export default class ApiRoute {
         this.db = db;
         this.router = express.Router();
     }
-
 }
