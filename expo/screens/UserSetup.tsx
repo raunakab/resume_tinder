@@ -26,10 +26,7 @@ export default class LoadingPage extends React.Component<Props> {
         occupation: ""
     }
     submitButton = () => {
-        if (this.state.name != null && this.state.age != null) {
-            console.log(this.state.name);
-            // send info the database
-        }
+        this.props.navigation.navigate('matching');
     }
 
     
