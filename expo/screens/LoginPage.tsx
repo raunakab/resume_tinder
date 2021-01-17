@@ -2,7 +2,8 @@ import React from 'react';
 import {
     Button,
 	StyleSheet,
-	View,
+    View,
+    Text,
 } from 'react-native';
 import {
     NavigationScreenProp,
@@ -101,10 +102,14 @@ export default class LoginPage extends React.Component<Props> {
 
     render() {
         return (
-            <View style={ styles.container } >
+            <View style={ styles.container }>
+                <View >
+
+                </View>
+                <Text>Nice to meet you</Text>
                 <Button title='Sign In with Google' onPress={() => {
                     this.signInWithGoogleAsync();
-                }}/>
+                }} color='#ff5c5c'/>
             </View>
         );
     }
