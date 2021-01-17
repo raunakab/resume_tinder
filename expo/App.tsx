@@ -37,6 +37,9 @@ import {
 } from 'react-navigation';
 import LoginPage from './screens/LoginPage';
 import LoadingPage from './screens/LoadingPage';
+import matching from './screens/matching';
+import UserSetup from './screens/UserSetup';
+import matches from './screens/matches';
 import firebase from 'firebase';
 import { firebaseConfig } from './config';
 // import {
@@ -48,6 +51,9 @@ import { firebaseConfig } from './config';
 const appSwitchNavigator = createSwitchNavigator({
 	LoginPage: LoginPage,
 	LoadingPage: LoadingPage,
+	matching: matching,
+	UserSetup: UserSetup,
+	matches: matches,
 });
 const AppNavigator = createAppContainer(appSwitchNavigator);
 

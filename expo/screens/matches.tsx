@@ -2,9 +2,8 @@ import React from 'react';
 import {Image} from 'react-native-elements';
 
 import {
-    Alert,
-    Button,
 	StyleSheet,
+	Text,
 	View,
 } from 'react-native';
 import {
@@ -30,22 +29,16 @@ interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>
 }
 
-export default class UserSetup extends React.Component<Props> {
+export default class matches extends React.Component<Props> {
     render() {
         return (
-            <View style = {styles.container}>
-                    <Image 
-                        source ={ require("../assets/icon.png") }
-                        style = {styles.pfpStyle}
-                        onPress = {() => Alert.alert("goodbye")}
-                    />
 
-                    <Image 
-                        source ={ require("../assets/icon.png") }
-                        style = {styles.matchStyle}
-                        onPress = {() => Alert.alert("bye")}
-                        onPress = {() => this.props.navigation.navigate('matching')}
-                    />          
+            <View style={ styles.verticalDiv } >
+            <Text style={{fontSize:50}}>MATCHES</Text>
+                <Image 
+                    source ={ require("../assets/match.png") }
+                    style = {{minWidth: 290, minHeight: 600}}
+                />
                 
             </View>
         );
@@ -53,16 +46,19 @@ export default class UserSetup extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    horizontalDiv: {
         
         justifyContent: 'center',
         alignItems: 'center',
-
         flexDirection: 'row',
-        paddingTop: 40,
-        
-        
+        marginTop: -40,
 
+    },
+    verticalDiv: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        marginTop: 100,
     },
     // imageWrapper: {
     //     width: 1000,
@@ -73,28 +69,25 @@ const styles = StyleSheet.create({
         // position: 'relative',
         width: 125,
         height: 125,
-        // marginTop: 0,
-        // marginLeft: 0,
-        // paddingRight:40,
-        left: 0,
         // paddingLeft: 50,
         // backgroundColor: 'blue',
         borderWidth: 2.5,
-        
     },
-
-    matchStyle: {
+    buttonStyle: {
+        backgroundColor: '#ed6b61',
+        borderRadius: 15,
+        marginLeft: 150,
+        height: 40,
+        width: 100,
+    },
+    pdfStyle: {
         // position: 'relative',
-        width: 125,
-        height: 125,
-        // paddingLeft: 40,
-        // // marginBottom: 700,
-        // marginLeft: 0,
-        marginLeft: 100,
+        marginTop: 50,
+        width: 300,
+        height: 550,
         // paddingLeft: 50,
         // backgroundColor: 'blue',
         borderWidth: 2.5,
-        
     },
 
 });

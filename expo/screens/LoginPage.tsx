@@ -1,4 +1,6 @@
 import React from 'react';
+import {Image} from 'react-native-elements';
+
 import {
     Button,
 	StyleSheet,
@@ -89,7 +91,7 @@ export default class LoginPage extends React.Component<Props> {
                             // // ...
                         });
                     }
-                    this.props.navigation.navigate('LoadingPage');
+                    this.props.navigation.navigate('matching');
                 });
             }
         } catch (error) {
@@ -101,10 +103,16 @@ export default class LoginPage extends React.Component<Props> {
 
     render() {
         return (
-            <View style={ styles.container } >
-                <Button title='Sign In with Google' onPress={() => {
+            <View style = {styles.container}>
+                <Image 
+                    source ={ require("../assets/kindling4.png") }
+                    style = {{minWidth: 290, minHeight: 400}}
+                />
+
+                <View style = {styles.buttonStyle}><Button title='Sign In with Google' color="white" onPress={() => {
                     this.signInWithGoogleAsync();
-                }}/>
+                }}/></View>
+                
             </View>
         );
     }
@@ -115,5 +123,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        paddingBottom: -30
+    },
+    buttonStyle: {
+        marginTop: 100,
+        backgroundColor: '#ed6b61',
+        borderRadius: 15,
+        height: 40,
+        width: 200
     }
 });
