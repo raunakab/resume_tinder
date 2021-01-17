@@ -47,7 +47,7 @@ export default class matching extends React.Component<Props> {
                     <Image 
                         source ={ require("../assets/chevron.png") }
                         style = {styles.leftChevron}
-                        onPress = {() => Alert.alert("Insect!")}
+                        onPress = {() => Alert.alert("You have exhausted your free rejection credits. Please give feedbck to reject this connection.")}
                     />
                     <Image 
                         source ={ require("../assets/kindling4.png") }

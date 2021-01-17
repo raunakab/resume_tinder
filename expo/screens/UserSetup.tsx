@@ -73,7 +73,7 @@ export default class LoadingPage extends React.Component<Props> {
 
                         Niaga uoy htiw klat ot emoc ev'i.</Text>
                     
-                    <Text style={{fontSize:20}}>How valuable was this feedback?</Text>
+                    <Text style={{fontSize:15, fontWeight:'bold'}}>How valuable was this feedback?</Text>
                     <Slider
                         style={{width: 200, height: 40}}
                         minimumValue={0}
@@ -89,7 +89,7 @@ export default class LoadingPage extends React.Component<Props> {
                         <Text style={{fontSize:20}}>Resume Version 1.1</Text>
                         <Text>Suckwe balls lmao.</Text>
                     
-                    <Text style={{fontSize:20}}>How valuable was this feedback?</Text>
+                    <Text style={{fontSize:15, fontWeight:'bold'}}>How valuable was this feedback?</Text>
                     <Slider
                         style={{width: 200, height: 40}}
                         minimumValue={0}
@@ -106,7 +106,7 @@ export default class LoadingPage extends React.Component<Props> {
                         <Text>Gret job! Maybe try to improve the connotation when 
                             describing your group work to leave a more positive impression. :)</Text>
                     
-                    <Text style={{fontSize:20}}>How valuable was this feedback?</Text>
+                    <Text style={{fontSize:15, fontWeight:'bold'}}>How valuable was this feedback?</Text>
                     <Slider
                         style={{width: 200, height: 40}}
                         minimumValue={0}
