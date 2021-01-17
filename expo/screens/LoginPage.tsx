@@ -92,7 +92,7 @@ export default class LoginPage extends React.Component<Props> {
                             // // ...
                         });
                     }
-                    this.props.navigation.navigate('matching');
+                    this.props.navigation.navigate('UserSetup');
                 });
             }
         } catch (error) {

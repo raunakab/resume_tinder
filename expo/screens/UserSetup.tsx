@@ -4,6 +4,7 @@ import {
 	Text,
     View,
     TouchableOpacity,
+     SafeAreaView, ScrollView,
 } from 'react-native';
 import firebase from 'firebase';
 import {
@@ -12,6 +13,8 @@ import {
     NavigationParams,
 } from 'react-navigation';
 import { TextInput } from 'react-native-gesture-handler';
+import Slider from '@react-native-community/slider';
+import Constants from 'expo-constants';
 
 interface Props {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>
@@ -25,16 +28,18 @@ export default class LoadingPage extends React.Component<Props> {
         age: "",
         occupation: ""
     }
-    submitButton = () => {
-        this.props.navigation.navigate('matching');
-    }
+    // submitButton = () => {
+    //     this.props.navigation.navigate('matching');
+    // }
 
     
+    
     render() {
+        // const [state, setState] = useState({ x: 0.3 });
         //const { name, age, occupation} = this.state;
         return (
-            <View style={styles.container}>
-                <Text style={styles.formLabel}>Initialize Profile</Text>
+            <View style={styles.verticalDiv}>
+                <Text style={styles.formLabel}>Edit Profile</Text>
                 <View>
                 <TextInput
                 placeholder="Full Name" placeholderTextColor= "#344566" style={styles.inputStyle}
@@ -47,21 +52,94 @@ export default class LoadingPage extends React.Component<Props> {
                 placeholder="Occupation" placeholderTextColor= "#344566" style={styles.inputStyle}
                 onChangeText={text => this.setState({occupation: text})}></TextInput>
                 </View>
-                <TouchableOpacity style={styles.button} onPress={() => this.submitButton}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('matching')}>
                 <Text style={styles.text}>Submit</Text></TouchableOpacity>
+      
+                <Text style={{fontSize:30}}>Feedback:</Text>
+                <SafeAreaView style={styles.container}>
+                <ScrollView style={styles.scrollView}>
+                    
+                <View style = {styles.profile}>
+                        <Text style={{fontSize:20}}>Resume Version 1.2</Text>
+                        <Text>Ecnelis fo dnuos eht nihtiw
+
+                        sniamer llits.
+
+                        Niarb ym ni detnalp saw taht noisiv eht dna,
+
+                        gnipeels saw I elihw sdees sti tfel,
+
+                        gnipeerc yltfos noisiv a esuaceb.
+
+                        Niaga uoy htiw klat ot emoc ev'i.</Text>
+                    
+                    <Text style={{fontSize:20}}>How valuable was this feedback?</Text>
+                    <Slider
+                        style={{width: 200, height: 40}}
+                        minimumValue={0}
+                        maximumValue={1}
+                        // minimumTrackTintColor="#FFFFFF"
+                        maximumTrackTintColor="#000000"
+                    />
+                    </View>
+
+                    <View style={{height:50}}></View>
+
+                    <View style = {styles.profile}>
+                        <Text style={{fontSize:20}}>Resume Version 1.1</Text>
+                        <Text>Suckwe balls lmao.</Text>
+                    
+                    <Text style={{fontSize:20}}>How valuable was this feedback?</Text>
+                    <Slider
+                        style={{width: 200, height: 40}}
+                        minimumValue={0}
+                        maximumValue={1}
+                        // minimumTrackTintColor="#FFFFFF"
+                        maximumTrackTintColor="#000000"
+                    />
+                    </View>
+
+                    <View style={{height:0}}></View>
+
+                    <View style = {styles.profile}>
+                        <Text style={{fontSize:20}}>Resume Version 1.0</Text>
+                        <Text>Gret job! Maybe try to improve the connotation when 
+                            describing your group work to leave a more positive impression. :)</Text>
+                    
+                    <Text style={{fontSize:20}}>How valuable was this feedback?</Text>
+                    <Slider
+                        style={{width: 200, height: 40}}
+                        minimumValue={0}
+                        maximumValue={1}
+                        // minimumTrackTintColor="#FFFFFF"
+                        maximumTrackTintColor="#000000"
+                    />
+                    </View>
+                </ScrollView>
+                </SafeAreaView>
+                
+                
             </View>
+
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
+horizontalDiv: {
+        
         justifyContent: 'center',
-        height: 0,
-      },
+        alignItems: 'center',
+        flexDirection: 'row',
+        marginTop: -40,
+
+    },
+    verticalDiv: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        marginTop: 100,
+    },
     
       formLabel: {
         fontSize: 20,
@@ -96,5 +174,18 @@ const styles = StyleSheet.create({
         backgroundColor: "#ac1094",
         alignItems: 'center',
         justifyContent: 'center'
-      }
+      },
+      profile: {
+        height: 150,
+        // marginTop:-100
+      },
+      container: {
+          height: 450
+        // flex: 1,
+        // marginTop: Constants.statusBarHeight,
+      },
+      scrollView: {
+        backgroundColor: 'pink',
+        marginHorizontal: 20,
+      },
   });
