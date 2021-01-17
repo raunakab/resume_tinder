@@ -11,10 +11,13 @@
     "@react-native-community/google-signin": "^5.0.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^3.8.3",
+    "bufferutil": "^4.0.3",
+    "core-js": "^3.8.2",
     "expo": "^40.0.0",
     "expo-google-app-auth": "^8.1.4",
     "expo-status-bar": "~1.0.3",
-    "firebase": "7.9.0",
+    "firebase": "^8.2.3",
+    "native-base": "^2.15.2",
     "rc-form": "^2.4.12",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -25,7 +28,7 @@
     "react-native-screens": "~2.15.0",
     "react-native-web": "~0.13.12",
     "react-navigation": "^4.4.3",
-    "tcomb-form-native": "^0.6.20"
+    "utf-8-validate": "^5.0.4"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

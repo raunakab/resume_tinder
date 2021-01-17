@@ -28,6 +28,7 @@ export default class LoadingPage extends React.Component<Props> {
         //         this.props.navigation.navigate('LoginPage');
         //     }
         // });
+        this.props.navigation.navigate('UserSetup');
     }
     render() {
         return (

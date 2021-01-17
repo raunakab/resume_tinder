@@ -63,7 +63,7 @@ export default class LoginPage extends React.Component<Props> {
                 <Button title='Sign In with Google' onPress={() => {
                     // alert('button pressed');
                     this.signInWithGoogleAsync();
-                    // this.props.navigation.navigate('LoadingPage');
+                    //this.props.navigation.navigate('LoadingPage');
                 }}/>
             </View>
         );
